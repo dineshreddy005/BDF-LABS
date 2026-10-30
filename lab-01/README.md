@@ -93,3 +93,13 @@ PORT=3000
 3. **Repository Structure Compliance**:
    - *Problem*: Course lab submissions require a multi-lab root repository structure (`BDF-LABS/lab-01/`) while ignoring `node_modules`.
    - *Solution*: Organized lab 1 inside `lab-01/`, added `.gitignore` to prevent committing heavy dependency directories, and configured relative screenshot paths.
+
+---
+
+## Rules for all labs
+- **Environment & Dependencies**: Never commit or share the `.env` file; do not commit `node_modules` (enforced via `.gitignore`).
+- **Security**: Passwords and sensitive secrets are never stored or logged in plain text.
+- **HTTP Standards**: Every route returns the appropriate HTTP status code (`200 OK`, `404 Not Found`).
+- **Database Safety**: Parameterised queries must always be used; never concatenate or interpolate raw user input into SQL queries.
+- **Academic Integrity**: All code is written and understood independently to be ready for viva explanation.
+

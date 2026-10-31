@@ -2,7 +2,35 @@
 
 **Name:** Nallamilli Dinesh Reddy · **Registration Number:** 252U1R9104 · **Section:** 111 Gen-AI(2B)
 
-**Live Link:** Not applicable — SQLite is a file-based database that cannot be persisted across Render/Railway free-tier deployments without a persistent disk. Postman screenshots of every endpoint are provided below instead.
+**Live Link:** Will be available after Render deployment. Expected URL format: `https://bdf-lab-02.onrender.com`
+
+---
+
+## Render Deployment
+
+### 1. Push to GitHub
+```bash
+git add .
+git commit -m "Prepare lab-02 for Render deployment"
+git push origin main
+```
+
+### 2. Create Render Web Service
+- Open Render and choose **New** → **Web Service**
+- Connect the GitHub repo: `BDF-LABS`
+- Set the service configuration:
+  - Name: `bdf-lab-02`
+  - Root Directory: `lab-02`
+  - Build Command: `npm install`
+  - Start Command: `npm start`
+
+### 3. Finalize the Live Link
+After Render finishes deployment, update this README with the actual generated URL:
+```md
+**Live Link:** https://bdf-lab-02.onrender.com
+```
+
+> Note: SQLite stores data in a local file and resets on Render restarts or redeployments. This app is suitable for demo/testing, but not for persistent production data without a database service.
 
 ---
 

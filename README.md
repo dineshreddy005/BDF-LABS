@@ -7,7 +7,7 @@ This repository contains all laboratory exercises and practical implementations 
 | Lab Folder | Title | Status | Description |
 | :--- | :--- | :--- | :--- |
 | [`lab-01/`](./lab-01/) | Lab 1: Node.js and Express server | Completed | Native HTTP server, Express refactoring, route handling, and 404 responses |
-| `lab-02/` | Lab 2: [Upcoming] | Planned | Coming soon |
+| [`lab-02/`](./lab-02/) | Lab 2: SQLite Database and CRUD Routes | Completed | Express REST API with SQLite, five CRUD endpoints, and parameterised queries |
 | `lab-03/` | Lab 3: [Upcoming] | Planned | Coming soon |
 | `lab-04/` | Lab 4: [Upcoming] | Planned | Coming soon |
 | `lab-05/` | Lab 5: [Upcoming] | Planned | Coming soon |

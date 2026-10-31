@@ -69,7 +69,17 @@ npm run dev
 # Direct Node run
 node index.js
 ```
-The server starts at `http://localhost:3000` (or the port set by `PORT`).
+The local server starts at `http://localhost:3000` (or the port set by `PORT`).
+
+### 5. Live Render URL
+When deployed on Render, use the live base URL instead of localhost:
+```text
+https://bdf-lab-02.onrender.com
+```
+Example request:
+```text
+GET https://bdf-lab-02.onrender.com/books
+```
 
 ---
 
@@ -86,6 +96,8 @@ The server starts at `http://localhost:3000` (or the port set by `PORT`).
 ---
 
 ## Screenshots
+
+> These screenshots are examples from the API responses. When testing the live Render app, replace the local base URL with the deployed URL: `https://bdf-lab-02.onrender.com`.
 
 ### 1. GET /books — Retrieve all books
 ![GET all books](screenshots/01-get-all-books.png)

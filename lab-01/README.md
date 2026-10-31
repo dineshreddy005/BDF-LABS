@@ -1,6 +1,6 @@
 # Lab 1: Node.js and Express server
 
-**Name:** Dinesh Reddy · **Registration Number:** [Your Registration Number] · **Section:** BDF Lab 1
+**Name:** Nallamilli Dinesh Reddy · **Registration Number:** 252U1R9104 · **Section:** 111 Gen-AI(2B)
 
 **Live Link:** [https://bdf-lab-1.onrender.com](https://bdf-lab-1.onrender.com) *(Or see Local Deployment below: Running locally on `http://localhost:3000`)*
 

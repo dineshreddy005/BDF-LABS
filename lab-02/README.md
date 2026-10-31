@@ -2,7 +2,7 @@
 
 **Name:** Nallamilli Dinesh Reddy · **Registration Number:** 252U1R9104 · **Section:** 111 Gen-AI(2B)
 
-**Live Link:** [https://bdf-lab-2.onrender.com/books](https://bdf-lab-2.onrender.com) *(Or see Local Deployment below: Running locally on `http://localhost:3000`)*
+**Live Link:** [https://bdf-lab-2.onrender.com/books](https://bdf-lab-2.onrender.com/books) *(Or see Local Deployment below: Running locally on `http://localhost:3000`)*
 
 ---
 

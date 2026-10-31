@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bdf-lab-02
+    runtime: node
+    rootDir: lab-02
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        generateValue: false
+    autoDeploy: true

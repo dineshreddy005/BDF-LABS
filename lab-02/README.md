@@ -1,36 +1,8 @@
-# Lab 2: SQLite Database and CRUD Routes
+# Lab 2: SQLite database and CRUD routes
 
 **Name:** Nallamilli Dinesh Reddy · **Registration Number:** 252U1R9104 · **Section:** 111 Gen-AI(2B)
 
-**Live Link:** Will be available after Render deployment. Expected URL format: `https://bdf-lab-02.onrender.com`
-
----
-
-## Render Deployment
-
-### 1. Push to GitHub
-```bash
-git add .
-git commit -m "Prepare lab-02 for Render deployment"
-git push origin main
-```
-
-### 2. Create Render Web Service
-- Open Render and choose **New** → **Web Service**
-- Connect the GitHub repo: `BDF-LABS`
-- Set the service configuration:
-  - Name: `bdf-lab-02`
-  - Root Directory: `lab-02`
-  - Build Command: `npm install`
-  - Start Command: `npm start`
-
-### 3. Finalize the Live Link
-After Render finishes deployment, update this README with the actual generated URL:
-```md
-**Live Link:** https://bdf-lab-02.onrender.com
-```
-
-> Note: SQLite stores data in a local file and resets on Render restarts or redeployments. This app is suitable for demo/testing, but not for persistent production data without a database service.
+**Live Link:** [https://bdf-lab-2.onrender.com](https://bdf-lab-2.onrender.com) *(Or see Local Deployment below: Running locally on `http://localhost:3000`)*
 
 ---
 
@@ -52,52 +24,42 @@ npm install
 ```
 
 ### 3. Environment Variables
-No `.env` file is required. The server reads `PORT` from the environment with a fallback:
+Create a `.env` file in the project root if required by your environment (never commit real values):
 ```env
-PORT=3000   # optional — defaults to 3000 if not set
+PORT=3000
 ```
-> Never commit a real `.env` file. The `.gitignore` in this folder already excludes it.
+> Note: Default fallback port is `3000` if `PORT` is not defined. The `.gitignore` in this folder already excludes `.env`.
 
 ### 4. Start the Server
-```bash
-# Standard start
-npm start
-
-# Development (auto-restart on file changes)
-npm run dev
-
-# Direct Node run
-node index.js
-```
-The local server starts at `http://localhost:3000` (or the port set by `PORT`).
-
-### 5. Live Render URL
-When deployed on Render, use the live base URL instead of localhost:
-```text
-https://bdf-lab-02.onrender.com
-```
-Example request:
-```text
-GET https://bdf-lab-02.onrender.com/books
-```
+- **Standard Start:**
+  ```bash
+  npm start
+  ```
+- **Development (auto-restart on file changes):**
+  ```bash
+  npm run dev
+  ```
+- **Direct Node Run:**
+  ```bash
+  node index.js
+  ```
+The server starts locally at `http://localhost:3000` (or the port defined by `PORT`).
 
 ---
 
-## Endpoints
+## Endpoints / Scripts Table
 
-| Method | Path | Description | Status Codes |
+| Method | Path | Description | Expected Status Code |
 | :--- | :--- | :--- | :--- |
 | `GET` | `/books` | Retrieve a list of all books | `200 OK` |
 | `GET` | `/books/:bookId` | Retrieve a single book by its ID | `200 OK`, `404 Not Found` |
-| `POST` | `/books` | Add a new book (body: `title`, `author`, `price`, `pages`) | `201 Created`, `500` |
-| `PUT` | `/books/:bookId` | Fully update an existing book by ID | `200 OK`, `404 Not Found`, `500` |
-| `DELETE` | `/books/:bookId` | Delete a book by its ID | `200 OK`, `404 Not Found`, `500` |
+| `POST` | `/books` | Add a new book (body: `title`, `author`, `price`, `pages`) | `201 Created`, `500 Internal Server Error` |
+| `PUT` | `/books/:bookId` | Fully update an existing book by ID | `200 OK`, `404 Not Found`, `500 Internal Server Error` |
+| `DELETE` | `/books/:bookId` | Delete a book by its ID | `200 OK`, `404 Not Found`, `500 Internal Server Error` |
 
 ---
 
 ## Screenshots
-
-> These screenshots are examples from the API responses. When testing the live Render app, replace the local base URL with the deployed URL: `https://bdf-lab-02.onrender.com`.
 
 ### 1. GET /books — Retrieve all books
 ![GET all books](screenshots/01-get-all-books.png)
@@ -151,17 +113,14 @@ Use `PUT` when the client knows the exact resource to update and sends a complet
 ## Notes: Problems Faced & Solutions
 
 1. **SQLite callback-based API**: The `sqlite3` npm package uses callbacks rather than Promises by default. All DB calls are wrapped in the route handlers using the callback pattern (`db.run`, `db.get`, `db.all`). For a Promise-based API, the `sqlite` wrapper package can be used instead.
-
-2. **`this.changes` / `this.lastID` context**: Arrow functions lose the `this` context set by `sqlite3`. The POST and DELETE handlers use `function(err) {}` (not an arrow function) so that `this.lastID` and `this.changes` are correctly accessible.
-
-3. **No deployment for SQLite**: Free-tier cloud platforms (Render, Railway) use ephemeral file systems — the `.db` file resets on every deployment. To keep this lab simple and consistent, it runs locally and Postman screenshots are provided as evidence.
+2. **`this.changes` / `this.lastID` context**: Arrow functions lose the `this` context set by `sqlite3`. The POST and DELETE handlers use regular function syntax `function(err) {}` (not arrow functions) so that `this.lastID` and `this.changes` are correctly accessible.
+3. **Handling 404 for Missing Resources**: When querying, updating, or deleting a book with a non-existent ID, checking `!row` or `this.changes === 0` ensures the API responds with `404 Not Found` rather than a generic success or 500 error.
 
 ---
 
 ## Rules for All Labs
 - **Environment & Dependencies**: Never commit or share the `.env` file; do not commit `node_modules` (enforced via `.gitignore`).
 - **Security**: Passwords and sensitive secrets are never stored or logged in plain text.
-- **HTTP Standards**: Every route returns the appropriate HTTP status code.
+- **HTTP Standards**: Every route returns the appropriate HTTP status code (`200 OK`, `201 Created`, `404 Not Found`).
 - **Database Safety**: Parameterised queries (`?` placeholders) are always used; raw user input is never concatenated into SQL strings.
 - **Academic Integrity**: All code is written and understood independently, ready for viva explanation.
-

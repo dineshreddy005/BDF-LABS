@@ -124,3 +124,4 @@ Use `PUT` when the client knows the exact resource to update and sends a complet
 - **HTTP Standards**: Every route returns the appropriate HTTP status code.
 - **Database Safety**: Parameterised queries (`?` placeholders) are always used; raw user input is never concatenated into SQL strings.
 - **Academic Integrity**: All code is written and understood independently, ready for viva explanation.
+

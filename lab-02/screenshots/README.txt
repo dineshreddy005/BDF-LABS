@@ -12,3 +12,4 @@ After adding the screenshots, run:
   git add screenshots/
   git commit -m "docs(lab-02): add Postman screenshots"
   git push
+

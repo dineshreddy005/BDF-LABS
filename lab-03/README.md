@@ -2,7 +2,7 @@
 
 **Name:** Nallamilli Dinesh Reddy · **Registration Number:** 252U1R9104 · **Section:** 111 Gen-AI(2B)
 
-**Live Link:** [https://bdf-lab-03.onrender.com/books](https://bdf-lab-03.onrender.com/books) *(Alternate: [https://bdf-lab-3.onrender.com/books](https://bdf-lab-3.onrender.com/books) | Local: `http://localhost:3000/books`)*
+**Live Link:** [https://bdf-lab-03.onrender.com/books](https://bdf-lab-03.onrender.com/books)  | Local: `http://localhost:3000/books`)*
 
 > **Note on Render Free Tier:** On Render free instances, the web service automatically spins down after 15 minutes of inactivity. The first request after idle can take ~50–60 seconds for a "cold start" before returning data. All full Postman screenshots are documented below.
 

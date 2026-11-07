@@ -99,29 +99,32 @@ You can import [`postman_collection.json`](./postman_collection.json) directly i
 
 ## Screenshots
 
-### 1. GET /books — Search, Sorting, and Pagination
-![GET books query params](screenshots/01-get-books-search-sort.png)
+### 1. GET /books — Retrieve All Books (Live Link Match)
+![GET all books live link match](screenshots/01-get-all-books.png)
 
-### 2. GET /books — Price Range Filter (`min_price` and `max_price`)
-![GET books price filter](screenshots/02-get-books-price-filter.png)
+### 2. GET /books — Search, Sorting & Pagination (`search_q`, `order_by`, `order`, `limit`, `offset`)
+![GET books query params](screenshots/02-get-books-search-sort.png)
 
-### 3. POST /books — 400 Bad Request on Validation Failure
-![POST validation error](screenshots/03-post-book-validation-400.png)
+### 3. GET /books — Price Range Filter (`min_price` and `max_price` with `BETWEEN`)
+![GET books price filter](screenshots/03-get-books-price-filter.png)
 
-### 4. POST /books — 201 Created on Successful Creation
-![POST book created](screenshots/04-post-book-created-201.png)
+### 4. POST /books — 400 Bad Request on Validation Failure (Missing Author / Bad Price)
+![POST validation error](screenshots/04-post-book-validation-400.png)
 
-### 5. PUT /books/:bookId — 200 OK on Successful Update
-![PUT book success](screenshots/05-put-book-200.png)
+### 5. POST /books — 201 Created on Successful Resource Creation
+![POST book created](screenshots/05-post-book-created-201.png)
 
-### 6. DELETE /books/:bookId — 200 OK on Successful Deletion
-![DELETE book success](screenshots/06-delete-book-200.png)
+### 6. PUT /books/:bookId — 200 OK on Successful Resource Update
+![PUT book success](screenshots/06-put-book-200.png)
 
-### 7. GET /books/:bookId — 404 Not Found with Consistent Error Format
-![GET 404 not found](screenshots/07-get-404-not-found.png)
+### 7. DELETE /books/:bookId — 200 OK on Successful Resource Deletion
+![DELETE book success](screenshots/07-delete-book-200.png)
 
-### 8. Task 7 — Debugging Exercise Verification
-![Debugging exercise fixed](screenshots/08-debugging-exercise-fixed.png)
+### 8. GET /books/:bookId — 404 Not Found with Consistent Error Format
+![GET 404 not found](screenshots/08-get-404-not-found.png)
+
+### 9. Task 7 — Faculty Handout Debugging Verification (All 4 Bugs Fixed)
+![Debugging exercise fixed](screenshots/09-debugging-exercise-fixed.png)
 
 ---
 

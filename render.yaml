@@ -9,3 +9,14 @@ services:
       - key: PORT
         generateValue: false
     autoDeploy: true
+
+  - type: web
+    name: bdf-lab-03
+    runtime: node
+    rootDir: lab-03
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        generateValue: false
+    autoDeploy: true

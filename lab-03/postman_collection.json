@@ -1,12 +1,12 @@
 {
   "info": {
     "name": "BDF Lab 03 - REST API Postman Collection",
-    "description": "Comprehensive test collection for Lab 3 covering search, sorting, filtering, validation, and error status codes.",
+    "description": "Comprehensive test collection for Lab 3 covering search, sorting, filtering, validation, and error status codes matching the live database.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "1. Success - GET All Books (Default Params)",
+      "name": "1. Success - GET All Books (Live Link Match)",
       "request": {
         "method": "GET",
         "header": [],
@@ -20,18 +20,18 @@
       }
     },
     {
-      "name": "2. Success - GET Books with Search (search_q=Gatsby)",
+      "name": "2. Success - GET Books with Search (search_q=Habit)",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/books?search_q=Gatsby",
+          "raw": "http://localhost:3000/books?search_q=Habit",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
           "path": ["books"],
           "query": [
-            { "key": "search_q", "value": "Gatsby" }
+            { "key": "search_q", "value": "Habit" }
           ]
         }
       }
@@ -57,19 +57,19 @@
       }
     },
     {
-      "name": "4. Success - GET Books Price Range (min_price=10 & max_price=12)",
+      "name": "4. Success - GET Books Price Range (min_price=250 & max_price=350)",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/books?min_price=10&max_price=12",
+          "raw": "http://localhost:3000/books?min_price=250&max_price=350",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
           "path": ["books"],
           "query": [
-            { "key": "min_price", "value": "10" },
-            { "key": "max_price", "value": "12" }
+            { "key": "min_price", "value": "250" },
+            { "key": "max_price", "value": "350" }
           ]
         }
       }
@@ -97,7 +97,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Clean Code\",\n  \"author\": \"Robert C. Martin\",\n  \"price\": 25,\n  \"pages\": 464\n}"
+          "raw": "{\n  \"title\": \"The Psychology of Money\",\n  \"author\": \"Morgan Housel\",\n  \"price\": 399,\n  \"pages\": 256\n}"
         },
         "url": {
           "raw": "http://localhost:3000/books",
@@ -117,7 +117,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Clean Code: Refactored\",\n  \"author\": \"Robert C. Martin\",\n  \"price\": 30,\n  \"pages\": 480\n}"
+          "raw": "{\n  \"title\": \"The Alchemist Updated\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 450,\n  \"pages\": 208\n}"
         },
         "url": {
           "raw": "http://localhost:3000/books/1",
@@ -134,11 +134,11 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/books/1",
+          "raw": "http://localhost:3000/books/11",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["books", "1"]
+          "path": ["books", "11"]
         }
       }
     },
@@ -151,7 +151,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"author\": \"Robert C. Martin\",\n  \"price\": 25,\n  \"pages\": 464\n}"
+          "raw": "{\n  \"author\": \"Morgan Housel\",\n  \"price\": 399,\n  \"pages\": 256\n}"
         },
         "url": {
           "raw": "http://localhost:3000/books",
@@ -171,7 +171,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Clean Code\",\n  \"price\": 25,\n  \"pages\": 464\n}"
+          "raw": "{\n  \"title\": \"The Psychology of Money\",\n  \"price\": 399,\n  \"pages\": 256\n}"
         },
         "url": {
           "raw": "http://localhost:3000/books",
@@ -191,7 +191,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Clean Code\",\n  \"author\": \"Robert C. Martin\",\n  \"price\": \"not-a-number\",\n  \"pages\": 464\n}"
+          "raw": "{\n  \"title\": \"The Psychology of Money\",\n  \"author\": \"Morgan Housel\",\n  \"price\": \"not-a-number\",\n  \"pages\": 256\n}"
         },
         "url": {
           "raw": "http://localhost:3000/books",
@@ -225,7 +225,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Non Existent\",\n  \"author\": \"Ghost\",\n  \"price\": 20,\n  \"pages\": 100\n}"
+          "raw": "{\n  \"title\": \"Non Existent\",\n  \"author\": \"Ghost\",\n  \"price\": 200,\n  \"pages\": 100\n}"
         },
         "url": {
           "raw": "http://localhost:3000/books/99999",
@@ -252,4 +252,3 @@
     }
   ]
 }
-

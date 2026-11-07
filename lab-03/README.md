@@ -81,13 +81,13 @@ You can import [`postman_collection.json`](./postman_collection.json) directly i
 | # | Test Name | Method | Endpoint / Query | Expected Status | Purpose / Validated Behavior |
 | :---: | :--- | :--- | :--- | :---: | :--- |
 | 1 | All Books (Default) | `GET` | `/books` | `200 OK` | Retrieves default list of books (sorted by `id ASC`, limit 10). |
-| 2 | Title Search | `GET` | `/books?search_q=Gatsby` | `200 OK` | Filters books containing substring "Gatsby". |
+| 2 | Title Search | `GET` | `/books?search_q=Habit` | `200 OK` | Filters books containing substring "Habit" (*Atomic Habits*, *The Power of Habit*). |
 | 3 | Sorting & Pagination | `GET` | `/books?order_by=price&order=DESC&limit=5&offset=0` | `200 OK` | Returns top 5 most expensive books in descending order. |
-| 4 | Price Range (Between) | `GET` | `/books?min_price=10&max_price=12` | `200 OK` | Returns books whose price is between \$10 and \$12. |
-| 5 | Single Book | `GET` | `/books/1` | `200 OK` | Returns book details for `id = 1`. |
+| 4 | Price Range (Between) | `GET` | `/books?min_price=250&max_price=350` | `200 OK` | Returns books whose price is between \$250 and \$350. |
+| 5 | Single Book | `GET` | `/books/1` | `200 OK` | Returns book details for `id = 1` (*The Alchemist Updated*). |
 | 6 | Create Book | `POST` | `/books` | `201 Created` | Creates new book with `{ title, author, price, pages }`. |
 | 7 | Update Book | `PUT` | `/books/1` | `200 OK` | Updates book record and returns `{ "message": "Book updated successfully" }`. |
-| 8 | Delete Book | `DELETE` | `/books/1` | `200 OK` | Deletes book record and returns `{ "message": "Book deleted successfully" }`. |
+| 8 | Delete Book | `DELETE` | `/books/11` | `200 OK` | Deletes book record and returns `{ "message": "Book deleted successfully" }`. |
 | 9 | Missing Title (Failure) | `POST` | `/books` | `400 Bad Request` | Rejects missing `title` with `{ "message": "Title is required..." }`. |
 | 10 | Missing Author (Failure) | `POST` | `/books` | `400 Bad Request` | Rejects missing `author` with `{ "message": "Author is required..." }`. |
 | 11 | Non-Numeric Price (Failure) | `POST` | `/books` | `400 Bad Request` | Rejects price `"not-a-number"` with `{ "message": "Price must be a valid number" }`. |
@@ -132,7 +132,7 @@ You can import [`postman_collection.json`](./postman_collection.json) directly i
 
 ### 1. Query parameter vs path parameter?
 - **Path parameters** (e.g., `/books/:bookId` -> `/books/5`) identify a **specific, unique resource** or hierarchy in the REST data model. They are mandatory parts of the URL structure because without them, the endpoint path itself changes.
-- **Query parameters** (e.g., `/books?search_q=Gatsby&order_by=price&limit=10`) are appended after a `?` as key-value pairs. They are used to **filter, search, sort, or paginate** a collection. They are optional and modify how the resource collection is returned without changing which resource type is targeted.
+- **Query parameters** (e.g., `/books?search_q=Habit&order_by=price&limit=10`) are appended after a `?` as key-value pairs. They are used to **filter, search, sort, or paginate** a collection. They are optional and modify how the resource collection is returned without changing which resource type is targeted.
 
 ### 2. What does stateless mean?
 **Statelessness** is a core constraint of REST architecture. It means that **each HTTP request from client to server must contain all the information necessary to understand and complete the request**. The server does not store any client context or session state between requests. Every request is completely self-contained, which allows the API to easily scale horizontally across multiple servers and makes debugging straightforward.

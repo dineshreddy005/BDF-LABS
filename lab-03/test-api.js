@@ -58,10 +58,10 @@ async function runTests() {
     // -------------------------------------------------------------
     console.log('\nTest Group 2: search_q partial match (Task 2)');
     {
-      const res = await request('/books?search_q=Gatsby');
-      assert(res.status === 200, 'GET /books?search_q=Gatsby returns 200 OK');
-      assert(res.body.length === 1, 'Found exactly 1 match for Gatsby');
-      assert(res.body[0].title === 'The Great Gatsby', 'Title matches "The Great Gatsby"');
+      const res = await request('/books?search_q=Habit');
+      assert(res.status === 200, 'GET /books?search_q=Habit returns 200 OK');
+      assert(res.body.length === 2, 'Found matches for Habit');
+      assert(res.body.every(b => b.title.includes('Habit')), 'All matched titles contain "Habit"');
     }
 
     // -------------------------------------------------------------
@@ -87,22 +87,22 @@ async function runTests() {
     console.log('\nTest Group 4: Price range filter (Task 3)');
     {
       // min_price and max_price together
-      const resBetween = await request('/books?min_price=10&max_price=12');
-      assert(resBetween.status === 200, 'GET /books?min_price=10&max_price=12 returns 200');
-      const allInRange = resBetween.body.every(b => b.price >= 10 && b.price <= 12);
-      assert(allInRange, 'All returned books have price BETWEEN 10 and 12');
+      const resBetween = await request('/books?min_price=250&max_price=350');
+      assert(resBetween.status === 200, 'GET /books?min_price=250&max_price=350 returns 200');
+      const allInRange = resBetween.body.every(b => b.price >= 250 && b.price <= 350);
+      assert(allInRange, 'All returned books have price BETWEEN 250 and 350');
 
       // min_price only
-      const resMin = await request('/books?min_price=14');
-      assert(resMin.status === 200, 'GET /books?min_price=14 returns 200');
-      const allMin = resMin.body.every(b => b.price >= 14);
-      assert(allMin, 'All returned books have price >= 14');
+      const resMin = await request('/books?min_price=400');
+      assert(resMin.status === 200, 'GET /books?min_price=400 returns 200');
+      const allMin = resMin.body.every(b => b.price >= 400);
+      assert(allMin, 'All returned books have price >= 400');
 
       // max_price only
-      const resMax = await request('/books?max_price=9');
-      assert(resMax.status === 200, 'GET /books?max_price=9 returns 200');
-      const allMax = resMax.body.every(b => b.price <= 9);
-      assert(allMax, 'All returned books have price <= 9');
+      const resMax = await request('/books?max_price=300');
+      assert(resMax.status === 200, 'GET /books?max_price=300 returns 200');
+      const allMax = resMax.body.every(b => b.price <= 300);
+      assert(allMax, 'All returned books have price <= 300');
     }
 
     // -------------------------------------------------------------
@@ -145,10 +145,10 @@ async function runTests() {
       const createRes = await request('/books', {
         method: 'POST',
         body: JSON.stringify({
-          title: 'Clean Code',
-          author: 'Robert C. Martin',
-          price: 25,
-          pages: 464
+          title: 'The Psychology of Money',
+          author: 'Morgan Housel',
+          price: 399,
+          pages: 256
         })
       });
       assert(createRes.status === 201, 'POST /books returns 201 Created');
@@ -158,16 +158,16 @@ async function runTests() {
       // GET created book -> 200 OK
       const getSingle = await request(`/books/${createdBookId}`);
       assert(getSingle.status === 200, 'GET /books/:id returns 200 OK');
-      assert(getSingle.body.title === 'Clean Code', 'Fetched book title matches');
+      assert(getSingle.body.title === 'The Psychology of Money', 'Fetched book title matches');
 
       // Update book -> 200 OK
       const updateRes = await request(`/books/${createdBookId}`, {
         method: 'PUT',
         body: JSON.stringify({
-          title: 'Clean Code: Refactored',
-          author: 'Robert C. Martin',
-          price: 30,
-          pages: 480
+          title: 'The Psychology of Money: Deluxe',
+          author: 'Morgan Housel',
+          price: 499,
+          pages: 280
         })
       });
       assert(updateRes.status === 200, 'PUT /books/:id returns 200 OK');
@@ -226,4 +226,3 @@ runTests().catch((err) => {
   if (serverInstance) serverInstance.close();
   process.exit(1);
 });
-

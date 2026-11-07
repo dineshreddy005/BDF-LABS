@@ -12,16 +12,16 @@ let db = null;
 
 // Initial sample dataset
 const initialBooks = [
-  ['The Great Gatsby', 'F. Scott Fitzgerald', 10, 180],
-  ['1984', 'George Orwell', 12, 328],
-  ['To Kill a Mockingbird', 'Harper Lee', 9, 281],
-  ['Pride and Prejudice', 'Jane Austen', 8, 279],
-  ['Moby-Dick', 'Herman Melville', 11, 635],
-  ['War and Peace', 'Leo Tolstoy', 15, 1225],
-  ['The Hobbit', 'J.R.R. Tolkien', 10, 310],
-  ['Crime and Punishment', 'Fyodor Dostoevsky', 13, 671],
-  ['The Catcher in the Rye', 'J.D. Salinger', 9, 214],
-  ['Brave New World', 'Aldous Huxley', 11, 268]
+  ['The Alchemist Updated', 'Paulo Coelho', 450, 208],
+  ['Atomic Habits', 'James Clear', 450, 320],
+  ['Rich Dad Poor Dad', 'Robert Kiyosaki', 300, 336],
+  ['Wings of Fire', 'A P J Abdul Kalam', 250, 180],
+  ['Think and Grow Rich', 'Napoleon Hill', 400, 250],
+  ['Deep Work', 'Cal Newport', 380, 280],
+  ['Ikigai', 'Hector Garcia', 290, 194],
+  ['The Power of Habit', 'Charles Duhigg', 420, 371],
+  ['Zero to One', 'Peter Thiel', 350, 210],
+  ['Clean Code', 'Robert Martin', 550, 464]
 ];
 
 // Initialize database schema and seed sample data
